@@ -23,7 +23,7 @@ This is the implementation binary directory of [4everland](https://4everland.org
 ```
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source $HOME/.cargo/env
-cd PoSC-docs
+cd 4everland-node-docs
 sudo ./autoinstall.sh
 ```
 
