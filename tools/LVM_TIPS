@@ -1,0 +1,53 @@
+## How to config disk LVM(Be caution that it's an example for using,do not use it directly)
+
+### 1.Install 
+```
+   sudo apt-get -y install lvm2
+```
+
+### 2.Formatted partition to disk /dev/sdm and /dev/sdn
+
+```
+  sudo fdisk /dev/sdm
+  Command (m for help): n 
+  Command action
+   e   extended
+   p   primary partition (1-4)
+   p 
+Partition number (1-4): 1 
+First cylinder (1-1044, default 1):  
+Last cylinder, +cylinders or +size{K,M,G} (1-1044, default 1044): 
+ 
+Command (m for help): t 
+Selected partition 1
+Hex code (type L to list codes): 8e 
+Changed system type of partition 1 to 8e (Linux LVM)
+enter "w" to save it.
+same steps to sdn disk
+
+### 3.Create PV
+```
+   sudo pvcreate /dev/sdm1
+   sudo pvcreate /dev/sdn1
+```
+
+### 4.Create VG
+```
+sudo vgcreate volume-group1 /dev/sdm1 /dev/sdn1
+```
+
+### 5.Create LV
+```
+sudo lvcreate -L 800G -n disk_example volume-group1
+```
+
+### 6.Formatted 
+```
+sudo mkfs.ext4 /dev/volume-group1/disk_example
+```
+
+### 7.Mount to a directory
+```
+mkdir /home/test
+mount /dev/volume-group1/disk_example /home/test
+```
