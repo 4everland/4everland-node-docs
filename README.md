@@ -9,7 +9,7 @@ This is the implementation binary directory of [4everland](https://4everland.org
   * Ubuntu\* 18.04 LTS Desktop 64bits
   * Ubuntu\* 18.04 LTS Server 64bits
 - Ensure that you have a system with the following required hardware:
-  * 6th Generation Intel(R) Core(TM) Processor or 
+  * 6th Generation Intel(R) Core(TM) Processor or Higher
 - You can use the check_sgx.c under the folder /tools to check your CPU and BIOS whether they support sgx
 ```
    gcc check_sgx.c -o check_sgx
